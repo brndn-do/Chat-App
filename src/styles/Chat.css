@@ -52,10 +52,10 @@
   align-items: center;
   min-width: 40px;
   min-height: 40px;
-  color: black;
-  background-color: rgb(235, 235, 235);
-  padding: .5rem;
-  border-radius: 1rem;
+  color: rgb(255, 255, 255);
+  background-color: rgb(71, 55, 74);
+  padding: .75rem;
+  border-radius: 20px;
 }
 
 .new-message-form {
