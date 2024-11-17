@@ -8,11 +8,14 @@
 
 html, body {
   height: 100%;
-  margin-top: 1rem;
 }
 
 html {
   background-color: rgb(42, 34, 49);
+}
+
+body {
+  padding-top: 1rem;
 }
 
 .room, .sign-out{
