@@ -1,0 +1,11 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sign-in {
+    color: black;
+    padding: .5rem;
+}

@@ -49,14 +49,14 @@ function App() {
         <div className="room">
           <label>Enter Room Name:</label>
           <input ref={roomInputRef} />
-          <button onClick={() => setRoom(roomInputRef.current.value)}>
+          <button className='enter-chat' onClick={() => setRoom(roomInputRef.current.value)}>
             Enter Chat
           </button>
         </div>
       )}
 
       <div className="sign-out">
-        <button onClick={signUserOut}>Sign Out</button>
+        <button className="sign-out" onClick={signUserOut}>Sign Out</button>
       </div>
     </>
   );
