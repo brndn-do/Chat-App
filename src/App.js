@@ -6,6 +6,9 @@ import { Chat } from "./components/Chat";
 
 import { useState, useRef } from "react";
 
+import { signOut } from "firebase/auth";
+import { auth } from "./firebase-config";
+
 // for handling cookies to save user authentication info
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
@@ -28,9 +31,16 @@ function App() {
     );
   }
 
+  const signUserOut = async () => {
+    await signOut(auth);
+    cookies.remove("auth-token");
+    setIsAuth(false);
+    setRoom(null);
+  };
+
   // if authenticated, render the room/chat interface
   return (
-    <div>
+    <>
       {room ? (
         // if a room is selected, render chat component
         <Chat room={room} />
@@ -44,7 +54,11 @@ function App() {
           </button>
         </div>
       )}
-    </div>
+
+      <div className="sign-out">
+        <button onClick={signUserOut}>Sign Out</button>
+      </div>
+    </>
   );
 }
 
