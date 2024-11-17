@@ -1,3 +1,5 @@
+// Auth.js
+
 import { auth, provider } from '../firebase-config.js'
 import { signInWithPopup } from 'firebase/auth';
 
@@ -6,8 +8,10 @@ const cookies = new Cookies();
 
 export const Auth = (props) => {
 
+    // destructure setIsAuth function from props
     const { setIsAuth } = props;
 
+    // function to handle Google sign-in
     const signInWithGoogle = async () => {
         try {
             const result = await signInWithPopup(auth, provider);
