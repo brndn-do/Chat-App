@@ -1,7 +1,7 @@
 // Chat.js
 
 import { useEffect, useState } from 'react';
-import { addDoc, collection, serverTimestamp, onSnapshot, query, where } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp, onSnapshot, query, where, orderBy } from 'firebase/firestore';
 import { auth, db } from "../firebase-config";
 import '../styles/Chat.css';
 
@@ -20,7 +20,7 @@ export const Chat = (props) => {
 
     // setting up a listener for new messages in the current room
     useEffect(() => {
-        const queryMessages = query(messagesRef, where("room", "==", room))
+        const queryMessages = query(messagesRef, where("room", "==", room), orderBy("createdAt"));
         const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
             let messages = [];
             snapshot.forEach((doc) => {
@@ -51,7 +51,17 @@ export const Chat = (props) => {
 
   return (
     <div className="chat-app">
-        <div> {messages.map((message) => <h1> {message.text}</h1>)}</div>
+      <div className="header">
+        <h1>Welcome to: {room}</h1>
+      </div>
+      <div className="messages">
+        {messages.map((message) => (
+          <div className='message' key={message.id}>
+            <span className='user'>{message.user}</span>
+            {message.text}
+          </div>
+        ))}
+      </div>
       <form onSubmit={handleSubmit} className="new-message-form">
         <input
           className="new-message-input"
