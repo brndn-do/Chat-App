@@ -1,4 +1,11 @@
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .chat-app {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
